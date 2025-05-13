@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <style>
+            .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            }
+        
+            .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1 / 1;
+            }
+        
+            .gallery-item:hover {
+            transform: scale(1.03);
+            }
+        
+            .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            display: block;
+            }
+        
+            /* Fullscreen overlay */
+            .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+        
+            .fullscreen-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            }
+        
+            .fullscreen-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            }
+        
+            .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            }
+        
+            .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            
+            .prev-btn {
+                left: 20px;
+            }
+            
+            .next-btn {
+                right: 20px;
+            }
+            
+            .image-info {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            }
+            </style>
+
+        <title>Namuwongo Community Foundation</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/ncf.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    
+    <body id="section_1">
+
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-8 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-geo-alt me-2"></i>
+                            Muyenga-Bukasa Road, Kampala.
+                        </p>
+
+                        <p class="d-flex mb-0">
+                            <i class="bi-envelope me-2"></i>
+
+                            <a href="mailto:florencekahunde80@gmail.com">
+                                florencekahunde80@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="https://x.com/NamuwongoUg" class="social-icon-link ">
+                                    <i class="fab fa-x-twitter"></i>
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://www.tiktok.com/@namuwongo.communi" class="social-icon-link bi-tiktok">
+                                </a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://www.youtube.com/@NamuwongoCommunityFoundation" class="social-icon-link bi-youtube">
+                                </a>
+                            </li>
+
+                            
+                        <li class="social-icon-item">
+                            <a href="https://wa.me/+256750366633" class="social-icon-link bi-whatsapp"></a>
+                        </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://www.instagram.com/namuwongocommunityfoundation" class="social-icon-link bi-instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/Updated Logo.png" class="logo img-fluid" >
+                    <span class="head">
+                     Namuwongo Community <br> Foundation 
+                        <small>save a life, save lives</small>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+ 
+
+                        <li class="nav-item ms-3">
+                            <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+
+            <section class="cta-section section-padding section-bg">                
+                    <h2 style="text-align: center;">GALLERY</h2>
+
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="images/3.png" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/4.png" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/16.JPG" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/9.JPG" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/7.JPG" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/5.JPG" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0014.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0010.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/computerlab.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0071.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0069.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0065.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0059.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0058.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0055.jpg" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/13 new.png" alt="Nature 1" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0024.jpg" alt="Nature 2" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0017.jpg" alt="Nature 3" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0040.jpg" alt="Nature 4" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0039.jpg" alt="Nature 5" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0036.jpg" alt="Nature 6" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0038.jpg" alt="Nature 7" class="gallery-image" data-title="">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/IMG-20250328-WA0044.jpg" alt="Nature 8" class="gallery-image" data-title="">
+                    </div>
+                </div>
+                
+                <!-- Fullscreen overlay -->
+                <div class="fullscreen-overlay">
+                    <button class="close-btn">&times;</button>
+                    <button class="nav-btn prev-btn">&lt;</button>
+                    <img src="" alt="" class="fullscreen-image">
+                    <button class="nav-btn next-btn">&gt;</button>
+                    <div class="image-info"></div>
+                </div>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const galleryItems = document.querySelectorAll('.gallery-item');
+                        const overlay = document.querySelector('.fullscreen-overlay');
+                        const fullscreenImage = document.querySelector('.fullscreen-image');
+                        const closeBtn = document.querySelector('.close-btn');
+                        const prevBtn = document.querySelector('.prev-btn');
+                        const nextBtn = document.querySelector('.next-btn');
+                        const imageInfo = document.querySelector('.image-info');
+                        
+                        let currentImageIndex = 0;
+                        const images = Array.from(galleryItems).map(item => ({
+                            src: item.querySelector('img').src,
+                            alt: item.querySelector('img').alt,
+                            title: item.querySelector('img').dataset.title
+                        }));
+                        
+                        // Open fullscreen overlay
+                        galleryItems.forEach((item, index) => {
+                            item.addEventListener('click', () => {
+                                currentImageIndex = index;
+                                updateFullscreenImage();
+                                overlay.classList.add('active');
+                                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                            });
+                        });
+                        
+                        // Close fullscreen overlay
+                        closeBtn.addEventListener('click', () => {
+                            overlay.classList.remove('active');
+                            document.body.style.overflow = 'auto'; // Re-enable scrolling
+                        });
+                        
+                        // Navigation
+                        prevBtn.addEventListener('click', () => {
+                            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                            updateFullscreenImage();
+                        });
+                        
+                        nextBtn.addEventListener('click', () => {
+                            currentImageIndex = (currentImageIndex + 1) % images.length;
+                            updateFullscreenImage();
+                        });
+                        
+                        // Keyboard navigation
+                        document.addEventListener('keydown', (e) => {
+                            if (!overlay.classList.contains('active')) return;
+                            
+                            if (e.key === 'Escape') {
+                                overlay.classList.remove('active');
+                                document.body.style.overflow = 'auto';
+                            } else if (e.key === 'ArrowLeft') {
+                                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                                updateFullscreenImage();
+                            } else if (e.key === 'ArrowRight') {
+                                currentImageIndex = (currentImageIndex + 1) % images.length;
+                                updateFullscreenImage();
+                            }
+                        });
+                        
+                        // Update the fullscreen image and info
+                        function updateFullscreenImage() {
+                            const currentImage = images[currentImageIndex];
+                            fullscreenImage.src = currentImage.src;
+                            fullscreenImage.alt = currentImage.alt;
+                            imageInfo.textContent = currentImage.title;
+                        }
+                    });
+                </script>
+            </section>
+
+
+            <section class="contact-section section-padding" id="section_6">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
+                            <div class="contact-info-wrap">
+                                <h2>Get in touch</h2>
+
+                                <div class="contact-image-wrap d-flex flex-wrap">
+                                    <img src="images/kahunde.PNG" class="img-fluid avatar-image" alt="">
+
+                                    <div class="d-flex flex-column justify-content-center ms-3">
+                                        <p class="mb-0">Kahunde Florence</p>
+                                        <p class="mb-0"><strong>Human Resource</strong></p>
+                                    </div>
+                                </div>
+
+                                <div class="contact-info">
+                                    <h5 class="mb-3">Contact Infomation</h5>
+
+                                    <p class="d-flex mb-2">
+                                        <i class="bi-geo-alt me-2"></i>
+                                        Muyenga-Bukasa, 256, Uganda.
+                                    </p>
+
+                                    <p class="d-flex mb-2">
+                                        <i class="bi-telephone me-2"></i>
+
+                                        <a href="tel: 120-240-9600">
+                                            256-750366633
+                                        </a>
+                                    </p>
+
+                                    <p class="d-flex">
+                                        <i class="bi-envelope me-2"></i>
+
+                                        <a href="mailto:info@yourgmail.com">
+                                            florencekahunde80@gmail.com
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-12 mx-auto">
+                            <section id="contact" style="padding: 40px 0;">
+                                <form class="contact-form" action="https://formsubmit.co/cymonpitaodok@gmail.com" method="POST">
+                                  <h2 style="font-size: 33px; color: #44525d; font-weight: bold;">Contact Us</h2>
+                                  <input type="text" name="name" placeholder="Your Name" required />
+                                  <input type="email" name="email" placeholder="Your Email" required />
+                                  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                                  <input type="hidden" name="_captcha" value="false">
+                                  <button type="submit">Send Message</button>
+                                </form>
+                              </section>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/counter.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="app.js"></script>
+
+    </body>
+</html>
